@@ -22,5 +22,9 @@
   "devDependencies": {
     "browser-sync": "^2.24.4",
     "gulp": "^4.0.2"
+  },
+  "dependencies": {
+    "proxy-middleware": "^0.15.0",
+    "url": "^0.11.0"
   }
 }
