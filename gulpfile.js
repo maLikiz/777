@@ -20,4 +20,4 @@ gulp.task('watch', function () {
     gulp.watch('src/**/*.php').on('change', browserSync.reload);
 });
 
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', gulp.parallel(['browser-sync', 'watch']));
