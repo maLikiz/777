@@ -1,0 +1,61 @@
+* {
+padding: 0;
+margin: 0;
+}
+body {
+background: #000;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+.block-404 {
+background: url(/img/404.jpg) no-repeat;
+display: block;
+width: 100%;
+height: 280px;
+max-width: 286px;
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+}
+.text {
+padding: 220px 0 0;
+text-align: center;
+}
+h1 {
+color: #eee88c;
+font: bold 16px Tahoma;
+margin: 0 0 10px;
+}
+p {
+color: #fffefe;
+font: bold 12px Tahoma;
+line-height: 18px;
+}
+.text a {
+color: #4cb4ff;
+text-decoration: underline;
+}
+.text a:hover {
+text-decoration: none;
+}
+.works {
+background: url(/img/storm.png) no-repeat;
+display: block;
+width: 100%;
+height: 266px;
+max-width: 286px;
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+}
+.text2 {
+padding: 185px 0 0;
+text-align: center;
+}
