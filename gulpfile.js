@@ -8,6 +8,7 @@ gulp.task('browser-sync', function() {
 
   const api = [
     '/core/',
+    '/logos/',
   ];
 
   const proxyOptionsList = api.map(item => {
@@ -30,9 +31,9 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.html', browserSync.reload);
-  gulp.watch('src/css/**/*.css', browserSync.reload);
-  gulp.watch('src/js/**/*.js', browserSync.reload);
+  gulp.watch('src/**/*.html').on('change', browserSync.reload);
+  gulp.watch('src/css/**/*.css').on('change', browserSync.reload);
+  gulp.watch('src/js/**/*.js').on('change', browserSync.reload);
   gulp.watch('src/**/*.php').on('change', browserSync.reload);
 });
 
