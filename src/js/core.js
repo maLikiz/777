@@ -540,26 +540,53 @@ $(document).ready(function() {
     prevArrow: false,
     nextArrow: false,
     slidesToScroll: 1,
-    speed: 1000,
+    speed: 250, // измени это
     autoplay: true,
-    autoplaySpeed: 0,
+    autoplaySpeed: 1000,
     cssEase: 'linear',
     touchMove: false,
-    variableWidth: true
+    variableWidth: true,
   });
+
+  var lastWinnerId = null;
 
   function winners() {
     $.ajax({
       type: 'POST',
       url: '/core/winners/',
       data: { js: 1 },
+      dataType: 'json',
       cache: false,
-      success: function(html) {
-        $winners.slick('slickAdd', html);
+      success: function(data) {
+        var filterdData = data.filter(function(item) {
+          return item.id / 1 > lastWinnerId / 1;
+        });
 
-        for (var i = 1; i <= 7; i++) {
+        var htmlArray = filterdData.map(item => {
+
+          return (
+            '<div class="winner"><div class="winner-border">' +
+            '<div class="win-pic"><img src="' + item.image + '" alt="' + item.gameName + '""></div>' +
+            '<div class="win-info"><p class="win-log">' + item.playerName + '</p>' +
+            '<span class="win-win">' + item.currency + item.cost + '</span>' +
+            '</div>' +
+            '</div>' +
+            '</div>')
+            ;
+        });
+        console.log(filterdData);
+
+        lastWinnerId = data[data.length - 1].id;
+
+        $winners.slick('slickAdd', htmlArray.join(''));
+
+        for (var i = 0; i <= filterdData.length - 1; i++) {
+          console.log(i, 'removed');
           $winners.slick('slickRemove', 0);
         }
+      },
+      error: function(error) {
+        console.error(error);
       },
     });
   }
